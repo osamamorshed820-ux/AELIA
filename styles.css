@@ -1,0 +1,353 @@
+/* --- إعدادات عامة --- */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #c5cdcf, hsl(240, 20%, 7%));
+    color: #222;
+    line-height: 1.5;
+    background: linear-gradient(to bottom, #050b10, hsl(0, 68%, 26%));
+
+    /* حط مسار الصورة هنا */
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* --- الهيدر --- */
+.header {
+    background: linear-gradient(to bottom, #050b10, hsl(0, 68%, 26%));
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+
+}
+
+.header .tagline {
+    font-size: 3rem;
+    color: #eef;
+
+}
+
+.cart-info {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* --- المنتجات --- */
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    /* العناصر بالمنتصف */
+    margin-top: 20px;
+}
+
+.product-card {
+
+
+    border-radius: 20px;
+    /* زوايا كيرف */
+    box-shadow: 0 6px 18px rgb(11, 11, 11);
+    flex: 1 1 calc(50% - 20px);
+    /* كل اثنين جنب بعض مع مساحة الفجوة */
+    max-width: calc(50% - 50px);
+    height: 200px;
+    /* ارتفاع ثابت */
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 30px 200px rgba(0, 0, 0, 0.736);
+}
+
+.product-card h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: #120b0b4d;
+}
+
+.price {
+    font-weight: bold;
+    color: #f0ebeb;
+    margin: 0;
+}
+
+
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.actions input.qty {
+    width: 50px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #f0e9e9;
+    text-align: center;
+}
+
+.actions button {
+    background: #0c06068f;
+    color: #e5dede;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.actions button:hover {
+    background: #e9e0e030;
+}
+
+/* --- ملخص العربة --- */
+/* --- شكل أيقونة السلة --- */
+.cart-summary {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #4a1111;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    /* يخليها دائرة */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    z-index: 1000;
+}
+
+/* --- شكل أيقونة السلة --- */
+.cart-summary {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #610f0e;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    /* دائرة */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    z-index: 1000;
+}
+
+/* أيقونة السلة */
+.cart-summary::before {
+    content: "🛒";
+    font-size: 28px;
+    color: #fff;
+}
+
+/* عند الوقوف */
+.cart-summary:hover {
+    background: #720f0f;
+    transform: scale(1.1);
+}
+
+/* --- أيقونة السلة --- */
+.cart-summary {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    background: #5d1212;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.577);
+    transition: background 0.3s, transform 0.3s;
+    z-index: 1000;
+
+    /* إخفاء أي نص داخلي */
+    font-size: 0;
+    color: transparent;
+    overflow: hidden;
+}
+
+/* نضيف الأيقونة من الـ ::before */
+.cart-summary::before {
+    content: "🛒";
+    font-size: 28px;
+    color: #fff;
+}
+
+/* عند التمرير */
+.cart-summary:hover {
+    background: #662a2a;
+    transform: scale(1.1);
+}
+
+/* --- العداد الأحمر فوق السلة --- */
+.cart-count {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: red;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- الفوتر --- */
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 15px 0;
+    background: #f5f2f2;
+    color: #ffffff;
+    font-size: 0.9rem;
+}
+
+/* --- استجابة --- */
+@media (max-width: 900px) {
+    .product-card {
+        width: 100%;
+        /* منتج واحد لكل صف على الموبايل */
+    }
+
+    .cart-summary {
+        position: static;
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+/* --- أيقونة إنستقرام حديثة --- */
+.instagram-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    /* زوايا مدورة خفيفة */
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* أيقونة الكاميرا داخل SVG */
+.instagram-link svg {
+    width: 28px;
+    height: 28px;
+    fill: white;
+    transition: transform 0.3s;
+}
+
+/* Hover */
+.instagram-link:hover {
+    transform: scale(1.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.instagram-link:hover svg {
+    transform: scale(1.1);
+}
+
+/* --- أيقونة واتساب حديثة --- */
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    /* زوايا مدورة */
+    background: #25D366;
+    /* لون واتساب الأخضر */
+    color: white;
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    margin-left: 10px;
+    /* مسافة بين أيقونات */
+}
+
+.social-link svg {
+    width: 28px;
+    height: 28px;
+    fill: white;
+    transition: transform 0.3s;
+}
+
+.social-link:hover {
+    transform: scale(1.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.social-link:hover svg {
+    transform: scale(1.1);
+}
+
+/* أيقونة فيسبوك حديثة بحجم إنستغرام */
+.facebook-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    /* نفس شكل إنستغرام */
+    background: #1877F2;
+    /* لون فيسبوك الرسمي */
+    color: white;
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    margin-left: 10px;
+    /* مسافة بين الأيقونات */
+}
+
+.facebook-link svg {
+    width: 28px;
+    height: 28px;
+    fill: white;
+    transition: transform 0.3s;
+}
+
+.facebook-link:hover {
+    transform: scale(1.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.facebook-link:hover svg {
+    transform: scale(1.1);
+}
+
+.oso {}
