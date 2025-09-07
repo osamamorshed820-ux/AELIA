@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AELIA</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body dir="rtl">
+
+  <!-- هيدر الموقع -->
+  <header class="header">
+    <div class="container">
+      <h1>AELIA</h1>
+      <p class="tagline">"اكتشف قوة النظافة بأمان مع سائل الجلي الطبيعي(AELIA)، مصنوع من مكونات صديقة للبشرة وغير مؤذية
+        لليدين،
+        يمنح مطبخك لمعاناً ونقاءً كل يوم."</p>
+
+    </div>
+
+
+    <div class="cart-info">
+      منتجاتك: <span id="cart-count">0</span> منتجات
+    </div>
+  </header>
+
+  <!-- المنتجات -->
+  <main class="container">
+    <section class="products">
+
+      <article class="product-card" data-price="3.75">
+        <div class="oso">
+
+          <p>سائل جلي 900 مل</p>
+          <p>"زهرة الياسمين,رائحة عطرة وهادئة، تملأ المطبخ بالنقاء" فعالية عاليهة
+            البشره ويساعد في تحسينها</p>
+          <p class="price">3.75 د.أ</p>
+          <div class="actions">
+
+            <button class="add-to-cart">أضف إلى العربة</button>
+          </div>
+      </article>
+
+      <article class="product-card" data-price="3.75">
+        <p>سائل جلي 900 مل</p>
+        <p>فعالية متوسطة، مناسب للاستخدام اليومي</p>
+        <p class="price">3.75 د.أ</p>
+        <div class="actions">
+
+          <button class="add-to-cart">أضف إلى العربة</button>
+        </div>
+      </article>
+
+      <article class="product-card" data-price="3.75">
+        <p>سائل جلي 900 مل</p>
+        <p>فعالية متوسطة، مناسب للاستخدام اليومي</p>
+        <p class="price">3.75 د.أ</p>
+        <div class="actions">
+
+          <button class="add-to-cart">أضف إلى العربة</button>
+        </div>
+      </article>
+
+      <article class="product-card" data-price="3.75">
+        <p>سائل جلي 900 مل</p>
+        <p>فعالية متوسطة، مناسب للاستخدام اليومي</p>
+        <p class="price">3.75 د.أ</p>
+        <div class="actions">
+
+          <button class="add-to-cart">أضف إلى العربة</button>
+        </div>
+      </article>
+
+      <article class="product-card" data-price="3.75">
+        <p>سائل جلي 900 مل</p>
+        <p>فعالية متوسطة، مناسب للاستخدام اليومي</p>
+        <p class="price">3.75 د.أ</p>
+        <div class="actions">
+
+          <button class="add-to-cart">أضف إلى العربة</button>
+        </div>
+      </article>
+
+      <article class="product-card" data-price="3.75">
+        <p>سائل جلي 900 مل</p>
+        <p>فعالية متوسطة، مناسب للاستخدام اليومي</p>
+        <p class="price">3.75 د.أ</p>
+        <div class="actions">
+
+          <button class="add-to-cart">أضف إلى العربة</button>
+        </div>
+      </article>
+
+      <article class="product-card" data-price="3.75">
+        <p>سائل جلي 900 مل</p>
+        <p>فعالية متوسطة، مناسب للاستخدام اليومي</p>
+        <p class="price">3.75 د.أ</p>
+        <div class="actions">
+
+          <button class="add-to-cart">أضف إلى العربة</button>
+        </div>
+      </article>
+
+      <article class="product-card" data-price="3.75">
+        <p>سائل جلي 900 مل</p>
+        <p>فعالية متوسطة، مناسب للاستخدام اليومي</p>
+        <p class="price">3.75 د.أ</p>
+        <div class="actions">
+
+          <button class="add-to-cart">أضف إلى العربة</button>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- أيقونة السلة -->
+  <div class="cart-summary" id="cart-icon">
+    <div class="cart-count" id="cart-count">0</div>
+  </div>
+
+  <!-- تفاصيل العربة -->
+  <div class="cart-popup" id="cart-popup">
+    <h3>🛒 ملخص العربة</h3>
+    <p>المجموع: <span id="cart-total">0.00</span> د.أ</p>
+    <button id="checkout">الدفع</button>
+  </div>
+
+
+  <!-- سكربت التفاعل -->
+  <script>
+    const cartCount = document.getElementById('cart-count');
+    const cartTotal = document.getElementById('cart-total');
+    const addButtons = document.querySelectorAll('.add-to-cart');
+    let cart = [];
+
+    addButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.product-card');
+        const price = parseFloat(card.dataset.price);
+        const qty = parseInt(card.querySelector('.qty').value);
+
+        if (qty > 0) {
+          cart.push({ price, qty });
+          updateCart();
+        } else {
+          alert("حدد الكمية أولاً 👌");
+        }
+      });
+    });
+
+    function updateCart() {
+      let totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
+      let totalPrice = cart.reduce((acc, item) => acc + item.qty * item.price, 0);
+
+      cartCount.textContent = totalQty;
+      cartTotal.textContent = totalPrice.toFixed(2);
+    }
+
+    document.getElementById('checkout').addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert('🚨 العربة فارغة!');
+        return;
+      }
+      alert('✅ تم إرسال الطلب. شكراً لشرائك!');
+      cart = [];
+      updateCart();
+    });
+  </script>
+
+
+
+  <!-- أيقونة إنستغرام -->
+  <a href="https://www.instagram.com/osama_shd/" target="_blank" class="social-link"
+    style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);">
+    <svg viewBox="0 0 512 512">
+      <path
+        d="M349.33 69.33h-186.66C101.87 69.33 69.33 101.87 69.33 162.67v186.66c0 60.8 32.53 93.34 93.34 93.34h186.66c60.8 0 93.34-32.53 93.34-93.34V162.67c0-60.8-32.53-93.34-93.34-93.34zm61.33 280c0 33.84-17.5 51.34-51.34 51.34H153.34c-33.84 0-51.34-17.5-51.34-51.34V162.67c0-33.84 17.5-51.34 51.34-51.34h186.66c33.84 0 51.34 17.5 51.34 51.34v186.66z" />
+      <path
+        d="M256 164.53c-50.87 0-91.47 40.6-91.47 91.47S205.13 347.47 256 347.47 347.47 306.87 347.47 256 306.87 164.53 256 164.53zm0 150.93c-33.07 0-59.47-26.4-59.47-59.47S222.93 196.53 256 196.53s59.47 26.4 59.47 59.47-26.4 59.46-59.47 59.46z" />
+      <circle cx="351.47" cy="160" r="17.33" />
+    </svg>
+  </a>
+
+  <!-- أيقونة واتساب -->
+  <a href="https://wa.me/0777321980" target="_blank" class="social-link">
+    <svg viewBox="0 0 512 512">
+      <path
+        d="M256 0C114.836 0 0 114.836 0 256c0 45.528 11.902 88.436 32.623 126.083L0 512l131.603-33.157C169.564 500.05 212.472 512 256 512c141.164 0 256-114.836 256-256S397.164 0 256 0zm0 464c-41.912 0-81.352-11.232-114.971-32.383l-8.231-4.88-78.144 19.682 20.84-76.351-5.234-8.568C59.557 337.061 48 297.315 48 256 48 132.288 132.288 48 256 48s208 84.288 208 208-84.288 208-208 208zm115.832-156.624c-1.603-2.69-5.958-4.334-12.48-7.596-6.524-3.26-37.616-18.406-43.472-20.49-5.857-2.083-10.118-3.26-14.337 3.26-4.22 6.521-16.32 20.49-19.997 24.72-3.676 4.228-7.353 4.756-13.877 1.496-6.524-3.26-27.552-10.141-52.5-32.38-19.397-17.266-32.5-38.674-36.377-45.197-3.876-6.523-.413-10.051 2.833-13.311 2.907-2.908 6.523-7.353 9.783-11.03 3.26-3.676 4.336-6.521 6.521-10.84 2.183-4.316 1.092-8.166-.547-11.487-1.637-3.323-14.337-34.512-19.644-47.32-5.308-12.81-10.839-11.032-14.337-11.266-3.676-.228-7.938-.275-12.18-.275-4.241 0-11.003 1.567-16.773 7.353-5.767 5.786-21.993 21.5-21.993 52.378s22.54 60.786 25.688 64.882c3.146 4.094 44.334 67.802 107.882 95.602 15.091 6.515 26.828 10.4 36.006 13.314 15.116 4.65 28.895 3.994 39.74 2.432 12.135-1.713 37.616-15.348 42.962-30.202 5.345-14.854 5.345-27.52 3.76-30.201z" />
+    </svg>
+  </a>
+  <a href="https://www.facebook.com/osama.sh.33865?locale=ar_AR" target="_blank" class="facebook-link">
+    <svg viewBox="0 0 512 512">
+      <path
+        d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.5 90.7 225.9 209 245v-173h-63v-72h63v-55.2c0-62.1 37-96.8 93.7-96.8 27.1 0 55.4 4.8 55.4 4.8v61h-31.3c-30.9 0-40.5 19.1-40.5 38.7V256h69l-11 72h-58v173c118.3-19.1 209-121.5 209-245z" />
+    </svg>
+  </a>
+
+
+</body>
+
+</html>
